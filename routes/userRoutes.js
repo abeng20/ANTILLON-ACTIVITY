@@ -1,0 +1,35 @@
+const express = require('express');
+const router = express.Router();
+
+// example in-memory data
+const users = [
+  { id: 1, name: 'Alice', email: 'alice@example.com' },
+  { id: 2, name: "Bob", email: "bob@example.com" },
+  { id: 3, name: "Charlie", email: "charlie@example.com" },
+  { id: 4, name: "David", email: "david@example.com" },
+  { id: 5, name: "Eva", email: "eva@example.com" },
+  { id: 6, name: "Frank", email: "frank@example.com" },
+  { id: 7, name: "Grace", email: "grace@example.com" },
+  { id: 8, name: "Henry", email: "henry@example.com" },
+  { id: 9, name: "Irene", email: "irene@example.com" },
+  { id: 10, name: "Jack", email: "jack@example.com" },
+  { id: 11, name: "Karen", email: "karen@example.com" },
+  { id: 12, name: "Liam", email: "liam@example.com" },
+  { id: 13, name: "Mia", email: "mia@example.com" },
+  { id: 14, name: "Noah", email: "noah@example.com" },
+  { id: 15, name: "Olivia", email: "olivia@example.com" },
+  { id: 16, name: "Paul", email: "paul@example.com" },
+  { id: 17, name: "Quinn", email: "quinn@example.com" },
+  { id: 18, name: "Rachel", email: "rachel@example.com" },
+  { id: 19, name: "Sam", email: "sam@example.com" },
+  { id: 20, name: "Tina", email: "tina@example.com" },
+];
+
+router.get('/:id', (req, res) => {
+  const id = Number(req.params.id);
+  const user = users.find(u => u.id === id);
+  if (!user) return res.status(404).json({ error: 'User not found' });
+  res.json(user);
+});
+
+module.exports = router;
